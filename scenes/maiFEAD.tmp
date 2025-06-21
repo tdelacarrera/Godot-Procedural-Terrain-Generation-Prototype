@@ -1,0 +1,100 @@
+[gd_scene load_steps=14 format=3 uid="uid://d0vdxt3nnyue4"]
+
+[ext_resource type="Script" path="res://scripts/main_camera.gd" id="1_uv1m8"]
+[ext_resource type="Texture2D" uid="uid://cfermus4sop3d" path="res://art/missing_floor..png" id="2_xmhlv"]
+[ext_resource type="Texture2D" uid="uid://csm3cseuybvkj" path="res://art/grass_floor.png" id="3_6w6q7"]
+[ext_resource type="Script" path="res://scripts/terrain.gd" id="3_x5sj0"]
+[ext_resource type="Texture2D" uid="uid://dwwye067aojtl" path="res://art/dirt_floor.png" id="4_7rpal"]
+[ext_resource type="PackedScene" uid="uid://ld2v7xnjgo72" path="res://scenes/pawn.tscn" id="4_e85j2"]
+[ext_resource type="Script" path="res://scripts/item_manager.gd" id="5_3mb4q"]
+[ext_resource type="Script" path="res://scripts/pathfinding_manager.gd" id="6_ko80t"]
+[ext_resource type="PackedScene" uid="uid://c2rxkpm8ineim" path="res://scenes/item.tscn" id="7_dwe6f"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5x1ki"]
+texture = ExtResource("3_6w6q7")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s1ewp"]
+texture = ExtResource("4_7rpal")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0254i"]
+texture = ExtResource("2_xmhlv")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ouc0n"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_5x1ki")
+sources/1 = SubResource("TileSetAtlasSource_s1ewp")
+sources/2 = SubResource("TileSetAtlasSource_0254i")
+
+[node name="MainScene" type="Node"]
+
+[node name="Terrain" type="TileMapLayer" parent="."]
+position = Vector2(-6, 26)
+tile_set = SubResource("TileSet_ouc0n")
+rendering_quadrant_size = 15
+script = ExtResource("3_x5sj0")
+width = 128
+height = 128
+seed = null
+grass_threshold = -0.4
+dirt_threshold = -0.6
+cell_size = 128
+show_debug = null
+
+[node name="MainCamera" type="Camera2D" parent="."]
+script = ExtResource("1_uv1m8")
+move_speed = 1000.0
+zoom_speed = 10.0
+
+[node name="Pawn" parent="." instance=ExtResource("4_e85j2")]
+position = Vector2(135, 131)
+
+[node name="Pawn2" parent="." instance=ExtResource("4_e85j2")]
+position = Vector2(288, 121)
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="ItemManager" type="Node" parent="Managers"]
+script = ExtResource("5_3mb4q")
+ItemPackedScene = ExtResource("7_dwe6f")
+
+[node name="PathfindingManager" type="Node" parent="Managers"]
+script = ExtResource("6_ko80t")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_vertical = 8
+
+[node name="Buttons" type="Control" parent="CanvasLayer/GUI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GUI/Buttons"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 556.0
+offset_right = 129.0
+offset_bottom = 596.0
+grow_vertical = 0
+
+[node name="Task" type="Button" parent="CanvasLayer/GUI/Buttons/HBoxContainer"]
+layout_mode = 2
+text = "Orders"
+
+[node name="Build" type="Button" parent="CanvasLayer/GUI/Buttons/HBoxContainer"]
+layout_mode = 2
+text = "Build"

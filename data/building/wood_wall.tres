@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=3 format=3 uid="uid://c1g1vr2iy0gpb"]
+
+[ext_resource type="Script" uid="uid://brhipyeyuusme" path="res://scripts/recipe_data.gd" id="1_idyot"]
+[ext_resource type="Script" uid="uid://buvo0t8w60t5h" path="res://scripts/building_data.gd" id="1_q5eaf"]
+
+[resource]
+script = ExtResource("1_q5eaf")
+name = ""
+id = 0
+coords = Vector2(0, 0)
+resources_required = {}
+work_required = 0
+is_resting_spot = false
+is_navigable = false
+recipes = Array[ExtResource("1_idyot")]([])

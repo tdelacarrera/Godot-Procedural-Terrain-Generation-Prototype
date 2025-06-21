@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://xad0mcab4gak"]
+
+[ext_resource type="Script" uid="uid://1ogj1vsjumiq" path="res://scripts/item_data.gd" id="1_74nq5"]
+[ext_resource type="Texture2D" uid="uid://b6vfx3t2sew32" path="res://art/item_2.png" id="2_gn5kn"]
+
+[resource]
+script = ExtResource("1_74nq5")
+name = "simple_prepared_food"
+category = "food"
+description = "Este alimento básico es una mezcla de ingredientes sencillos que se han cocinado con esmero. Ideal para sobrevivientes que necesitan energía rápida, su sabor es modesto pero reconfortante. Elaborado con vegetales frescos y proteínas accesibles, proporciona los nutrientes esenciales para mantener la moral alta en tiempos difíciles. Perfecto para una comida rápida en la cocina del refugio o como un plato reconfortante después de un largo día de trabajo."
+texture = ExtResource("2_gn5kn")
+damage = ""
+nutrition = ""

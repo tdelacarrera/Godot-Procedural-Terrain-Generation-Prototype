@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dids57x0xybe1"]
+
+[ext_resource type="Script" uid="uid://1ogj1vsjumiq" path="res://scripts/item_data.gd" id="1_kyeej"]
+[ext_resource type="Texture2D" uid="uid://cxa53fuh7s373" path="res://art/mountain.png" id="2_k27dk"]
+
+[resource]
+script = ExtResource("1_kyeej")
+name = "mountain"
+category = "test"
+description = "una montaña"
+texture = ExtResource("2_k27dk")
+damage = ""
+nutrition = ""
